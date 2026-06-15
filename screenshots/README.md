@@ -1,7 +1,7 @@
 ## Screenshots
 
-![Dashboard](screenshots/dashboard.png)
+![Dashboard](dashboard.png)
 
-![Month Details](screenshots/month_details.png)
+![Month Details](month_details.png)
 
-![PDF Export](screenshots/pdf_export.png)
+![PDF Export](pdf_export.png)
