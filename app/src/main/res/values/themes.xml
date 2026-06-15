@@ -1,0 +1,9 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Base.Theme.DnevniceApp" parent="Theme.Material3.DayNight">
+        <!-- Ovde kasnije možemo menjati boje aplikacije -->
+    </style>
+
+    <style name="Theme.DnevniceApp" parent="Base.Theme.DnevniceApp" />
+
+</resources>

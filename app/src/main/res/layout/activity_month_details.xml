@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <TextView
+        android:id="@+id/textMonthTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mesec"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textTotal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ukupno: 0 RSD"
+        android:textSize="20sp"
+        android:layout_marginTop="6dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textWorkDays"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Radnih dana: 0"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/textAverage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Prosek: 0 RSD"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textTotalHours"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Ukupno sati: 0"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/textBestDay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Najbolji dan: 0 RSD"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnToggleForm"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:text="+ Novi dan"
+        android:layout_marginTop="12dp" />
+
+    <LinearLayout
+        android:id="@+id/layoutEntryForm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/btnPickDate"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:text="Izaberi datum"
+            android:layout_marginTop="8dp" />
+
+        <EditText
+            android:id="@+id/editHours"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Broj sati"
+            android:textSize="15sp"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/editBarTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Cifra šanka"
+            android:textSize="15sp"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/editPeopleCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Broj ljudi"
+            android:textSize="15sp"
+            android:inputType="number" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <Button
+                android:id="@+id/btnAddDay"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_weight="1"
+                android:text="+ Dodaj dan" />
+
+            <Button
+                android:id="@+id/btnCancelEdit"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:text="Otkaži"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Uneti dani:"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_marginTop="12dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerDays"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="6dp"
+        android:paddingBottom="90dp"
+        android:clipToPadding="false" />
+
+</LinearLayout>

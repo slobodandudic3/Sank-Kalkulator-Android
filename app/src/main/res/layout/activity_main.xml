@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    android:paddingBottom="20dp"
+    android:paddingTop="48dp">
+
+    <EditText
+        android:id="@+id/editMonthName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Unesi mesec, npr. Januar 2026"
+        android:layout_marginTop="32dp"/>
+
+    <Button
+        android:id="@+id/btnAddMonth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="+ Dodaj mesec"
+        android:layout_marginTop="12dp" />
+
+    <TextView
+        android:id="@+id/textDashboardTotal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ukupno svih meseci: 0 RSD"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/textDashboardDays"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ukupno radnih dana: 0"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/textDashboardHours"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ukupno sati: 0h"
+        android:textSize="15sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerMonths"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp" />
+
+</LinearLayout>
