@@ -77,8 +77,6 @@ Dashboard overview includes:
 
 ## 📸 Screenshots
 
-Add screenshots here.
-
 ### Dashboard
 
 ![Dashboard](screenshots/dashboard.png)
