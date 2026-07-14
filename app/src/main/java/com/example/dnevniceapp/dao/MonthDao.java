@@ -17,6 +17,9 @@ public interface MonthDao {
     @Query("SELECT * FROM months ORDER BY id DESC")
     List<MonthEntity> getAllMonths();
 
+    @Query("UPDATE months SET name = :newName WHERE id = :monthId")
+    void updateMonthName(int monthId, String newName);
+
     @Query("DELETE FROM months WHERE id = :monthId")
     void deleteMonth(int monthId);
 

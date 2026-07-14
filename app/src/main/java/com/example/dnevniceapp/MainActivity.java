@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -72,10 +73,9 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(EXTRA_MONTH_NAME, month.name);
                 startActivity(intent);
             }
-
             @Override
             public void onMonthLongClick(MonthEntity month) {
-                showDeleteMonthDialog(month);
+                showMonthOptionsDialog(month);
             }
         });
 
@@ -268,6 +268,99 @@ public class MainActivity extends AppCompatActivity {
                                 "h"
                 );
                 adapter.notifyDataSetChanged();
+            });
+        });
+    }
+    private void showMonthOptionsDialog(MonthEntity month) {
+
+        String[] options = {
+                "Izmeni naziv",
+                "Obriši mesec"
+        };
+
+        new AlertDialog.Builder(this)
+                .setTitle(month.name)
+                .setItems(options, (dialog, which) -> {
+
+                    if (which == 0) {
+                        showEditMonthNameDialog(month);
+                    } else if (which == 1) {
+                        showDeleteMonthDialog(month);
+                    }
+                })
+                .setNegativeButton("OTKAŽI", null)
+                .show();
+    }
+    private void showEditMonthNameDialog(MonthEntity month) {
+
+        EditText input = new EditText(this);
+
+        input.setText(month.name);
+        input.setSelection(input.getText().length());
+        input.setSingleLine(true);
+        input.setHint("Unesi naziv meseca");
+
+        int horizontalPadding =
+                (int) (24 * getResources().getDisplayMetrics().density);
+
+        FrameLayout container = new FrameLayout(this);
+
+        container.setPadding(
+                horizontalPadding,
+                0,
+                horizontalPadding,
+                0
+        );
+
+        container.addView(input);
+
+        AlertDialog editDialog = new AlertDialog.Builder(this)
+                .setTitle("Izmena naziva meseca")
+                .setMessage("Unesi novi naziv:")
+                .setView(container)
+                .setPositiveButton("SAČUVAJ", null)
+                .setNegativeButton("OTKAŽI", null)
+                .create();
+
+        editDialog.setOnShowListener(dialogInterface -> {
+
+            editDialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                    .setOnClickListener(v -> {
+
+                        String newName =
+                                input.getText().toString().trim();
+
+                        if (newName.isEmpty()) {
+                            input.setError("Naziv meseca ne sme biti prazan");
+                            return;
+                        }
+
+                        if (newName.equals(month.name)) {
+                            editDialog.dismiss();
+                            return;
+                        }
+
+                        updateMonthName(month, newName);
+                        editDialog.dismiss();
+                    });
+        });
+
+        editDialog.show();
+    }
+    private void updateMonthName(MonthEntity month, String newName) {
+
+        executorService.execute(() -> {
+
+            db.monthDao().updateMonthName(month.id, newName);
+
+            runOnUiThread(() -> {
+                Toast.makeText(
+                        this,
+                        "Naziv meseca je izmenjen",
+                        Toast.LENGTH_SHORT
+                ).show();
+
+                loadMonths();
             });
         });
     }
